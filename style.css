@@ -22,7 +22,10 @@ body {
     text-align: right;
     padding: 10px;
     margin-bottom: 10px;
+    min-height: 40px;
+    border-radius: 4px;
 }
+
 .buttons{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -53,3 +56,12 @@ body {
 .button.equal:hover{
     background-color: #3399ff;
 }   
+.button.special,
+.button.clear {
+    background-color: #666;
+}
+
+.button.special:hover,
+.button.clear:hover {
+    background-color: #777;
+}
