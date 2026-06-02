@@ -34,11 +34,12 @@ operatorButtons.forEach(button => {
             return;
         }
 
-        if (currentOperator !== null) {
-            secondNumber = parseFloat(displayValue);
-            displayValue = operate(currentOperator, firstNumber, secondNumber).toString();
-            updateDisplay();
-        }
+       if (currentOperator !== null) {
+    secondNumber = parseFloat(displayValue);
+    const result = operate(currentOperator, firstNumber, secondNumber);
+    displayValue = formatResult(result);
+    updateDisplay();
+}
 
         firstNumber = parseFloat(displayValue);
         currentOperator = button.textContent;
@@ -48,10 +49,10 @@ operatorButtons.forEach(button => {
 
 equalButton.addEventListener('click', () => {
     if (firstNumber === null || currentOperator === null || displayValue === '') return;
-
-    secondNumber = parseFloat(displayValue);
-    displayValue = operate(currentOperator, firstNumber, secondNumber).toString();
-    updateDisplay();
+        secondNumber = parseFloat(displayValue);
+        const result = operate(currentOperator, firstNumber, secondNumber);
+        displayValue = formatResult(result);
+        updateDisplay();
 
     currentOperator = null;
     justCalculated = true;
@@ -95,6 +96,17 @@ backspaceButton.addEventListener('click', () => {
     displayValue = displayValue.slice(0, -1);
     updateDisplay();
 });
+function formatResult(result) {
+    if (typeof result === 'string') {
+        return result;
+    }
+
+    if (!Number.isInteger(result)) {
+        return Number(result.toFixed(8)).toString();
+    }
+
+    return result.toString();
+}
 
 
 function add(a, b) {
