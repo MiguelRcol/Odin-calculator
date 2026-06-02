@@ -34,12 +34,12 @@ operatorButtons.forEach(button => {
             return;
         }
 
-       if (currentOperator !== null) {
+        if (currentOperator !== null) {
             secondNumber = parseFloat(displayValue);
             const result = operate(currentOperator, firstNumber, secondNumber);
             displayValue = formatResult(result);
-         updateDisplay();
-}
+            updateDisplay();
+        }
 
         firstNumber = parseFloat(displayValue);
         currentOperator = button.textContent;

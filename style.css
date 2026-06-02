@@ -68,3 +68,6 @@ body {
 .button.backspace{
     background-color: #666;
 }
+.button.backspace:hover{
+    background-color: #777;
+}
