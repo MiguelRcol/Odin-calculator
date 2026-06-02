@@ -15,7 +15,7 @@ function divide(a, b) {
         return "Nice try. You can't divide by zero.";
     }
 
-    return a / b;
+    return a / b;   
 }
 
 function operate(operator, firstNumber, secondNumber) {
@@ -29,6 +29,6 @@ function operate(operator, firstNumber, secondNumber) {
         case '/':
             return divide(firstNumber, secondNumber);
         default:
-            return 0;
+            return null;
     }
 }
