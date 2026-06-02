@@ -1,3 +1,74 @@
+const display = document.querySelector('.display');
+const numberButtons = document.querySelectorAll('.number');
+const operatorButtons = document.querySelectorAll('.operator');
+const equalButton = document.querySelector('.equal');
+const clearButton = document.querySelector('.clear');
+
+let displayValue = '';
+let firstNumber = null;
+let secondNumber = null;
+let currentOperator = null;
+let justCalculated = false;
+
+
+numberButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        if (justCalculated) {
+            displayValue = '';
+            justCalculated = false;
+        }
+
+        displayValue += button.textContent;
+        updateDisplay();
+    });
+});
+
+operatorButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        if (displayValue === '' && currentOperator === null) return;
+
+        if (currentOperator !== null && displayValue === '') {
+            currentOperator = button.textContent;
+            return;
+        }
+
+        if (currentOperator !== null) {
+            secondNumber = parseFloat(displayValue);
+            displayValue = operate(currentOperator, firstNumber, secondNumber).toString();
+            updateDisplay();
+        }
+
+        firstNumber = parseFloat(displayValue);
+        currentOperator = button.textContent;
+        displayValue = '';
+    });
+});
+
+equalButton.addEventListener('click', () => {
+    if (firstNumber === null || currentOperator === null || displayValue === '') return;
+
+    secondNumber = parseFloat(displayValue);
+    displayValue = operate(currentOperator, firstNumber, secondNumber).toString();
+    updateDisplay();
+
+    currentOperator = null;
+    justCalculated = true;
+});
+
+clearButton.addEventListener('click', () => {
+    displayValue = '';
+    firstNumber = null;
+    secondNumber = null;
+    currentOperator = null;
+    justCalculated = false;
+    updateDisplay();
+});
+
+function updateDisplay() {
+    display.textContent = displayValue || '0';
+}
+
+
 function add(a, b) {
     return a + b;
 }
