@@ -35,10 +35,10 @@ operatorButtons.forEach(button => {
         }
 
        if (currentOperator !== null) {
-    secondNumber = parseFloat(displayValue);
-    const result = operate(currentOperator, firstNumber, secondNumber);
-    displayValue = formatResult(result);
-    updateDisplay();
+            secondNumber = parseFloat(displayValue);
+            const result = operate(currentOperator, firstNumber, secondNumber);
+            displayValue = formatResult(result);
+         updateDisplay();
 }
 
         firstNumber = parseFloat(displayValue);
@@ -49,10 +49,11 @@ operatorButtons.forEach(button => {
 
 equalButton.addEventListener('click', () => {
     if (firstNumber === null || currentOperator === null || displayValue === '') return;
-        secondNumber = parseFloat(displayValue);
-        const result = operate(currentOperator, firstNumber, secondNumber);
-        displayValue = formatResult(result);
-        updateDisplay();
+
+    secondNumber = parseFloat(displayValue);
+    const result = operate(currentOperator, firstNumber, secondNumber);
+    displayValue = formatResult(result);
+    updateDisplay();
 
     currentOperator = null;
     justCalculated = true;
