@@ -4,6 +4,7 @@ const operatorButtons = document.querySelectorAll('.operator');
 const equalButton = document.querySelector('.equal');
 const clearButton = document.querySelector('.clear');
 const decimalButton = document.querySelector('.decimal');
+const backspaceButton = document.querySelector('.backspace');
 
 let displayValue = '';
 let firstNumber = null;
@@ -82,6 +83,17 @@ decimalButton.addEventListener('click', () => {
         displayValue += '.';
         updateDisplay();
     }
+});
+backspaceButton.addEventListener('click', () => {
+    if (justCalculated) {
+        displayValue = '';
+        justCalculated = false;
+        updateDisplay();
+        return;
+    }
+
+    displayValue = displayValue.slice(0, -1);
+    updateDisplay();
 });
 
 

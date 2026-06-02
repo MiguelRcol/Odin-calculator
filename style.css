@@ -50,7 +50,7 @@ body {
 }
 .button.equal{
     background-color: #007aff;
-    grid-column: span 2;
+
 
 }
 .button.equal:hover{
@@ -64,4 +64,7 @@ body {
 .button.special:hover,
 .button.clear:hover {
     background-color: #777;
+}
+.button.backspace{
+    background-color: #666;
 }
