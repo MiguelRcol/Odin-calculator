@@ -3,6 +3,7 @@ const numberButtons = document.querySelectorAll('.number');
 const operatorButtons = document.querySelectorAll('.operator');
 const equalButton = document.querySelector('.equal');
 const clearButton = document.querySelector('.clear');
+const decimalButton = document.querySelector('.decimal');
 
 let displayValue = '';
 let firstNumber = null;
@@ -67,6 +68,21 @@ clearButton.addEventListener('click', () => {
 function updateDisplay() {
     display.textContent = displayValue || '0';
 }
+decimalButton.addEventListener('click', () => {
+    if (justCalculated) {
+        displayValue = '0';
+        justCalculated = false;
+    }
+
+    if (displayValue === '') {
+        displayValue = '0';
+    }
+
+    if (!displayValue.includes('.')) {
+        displayValue += '.';
+        updateDisplay();
+    }
+});
 
 
 function add(a, b) {
