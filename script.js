@@ -108,6 +108,27 @@ function formatResult(result) {
     return result.toString();
 }
 
+document.addEventListener('keydown', (event) => {
+    const key = event.key;
+
+    if (key >= '0' && key <= '9') {
+        const numberButton = Array.from(numberButtons).find(button => button.textContent === key);
+        numberButton.click();
+    } else if (['+', '-', '*', '/'].includes(key)) {
+        const operatorButton = Array.from(operatorButtons).find(button => button.textContent === key);
+        operatorButton.click();
+    } else if (key === 'Enter' || key === '=') {
+        equalButton.click();
+    } else if (key === 'Backspace') {
+        backspaceButton.click();
+    } else if (key === 'Escape') {
+        clearButton.click();
+    } else if (key === '.') {
+        decimalButton.click();
+    }
+});
+
+
 
 function add(a, b) {
     return a + b;
